@@ -1,0 +1,161 @@
+body{
+    display: flex;
+    justify-content: center;
+   align-items: center;
+   height: 100vh;
+}
+
+
+/* The Cicyle */
+.wheel {
+    border: 2px solid black;
+    border-radius: 50%;
+    margin-left: 50px;
+    position: absolute;
+    height: 55vw;
+    width: 55vw;
+    max-width: 500px;
+    max-height: 500px;
+    /*The animation-name property is used to link a @keyframes rule to a CSS selector. The value of this property should match the name of the*/
+    animation-name:wheel;
+   animation-duration:10s;
+
+   /*The animation-iteration-count property sets how many times your animation should repeat. This can be set to a number, or to infinite to indefinitely repeat the animation. Your Ferris wheel*/
+   animation-iteration-count:infinite;
+
+   /*The animation-timing-function property sets how the animation should progress over time.*/
+   animation-timing-function:linear;
+  }
+
+  /* The line in the middle*/
+  .line {
+    background-color: black;
+    width: 50%;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /*The transform from the point*/
+    transform-origin: 0% 0%;
+  }
+
+  /*Remember that the transform property allows you to manipulate the shape of an element. In this case, using the rotate(60deg) */
+  .line:nth-of-type(2) {
+    transform: rotate(60deg);
+  }
+
+  /*The Lines in the wheel*/
+  .line:nth-of-type(2) {
+    transform: rotate(60deg);
+  }
+  .line:nth-of-type(3) {
+    transform: rotate(120deg);
+  }
+  .line:nth-of-type(4) {
+    transform: rotate(180deg);
+  }
+  .line:nth-of-type(5) {
+    transform: rotate(240deg);
+  }
+  .line:nth-of-type(6) {
+    transform: rotate(300deg);
+  }
+
+  /*The Red box at the top*/
+  .cabin {
+    background-color: red;
+    width: 20%;
+    height: 20%;
+    position: absolute;
+    border: 2px solid;
+    transform-origin: 50% 0%;
+  }
+
+  /*Time to position the cabins around the wheel. Select the first */
+  .line:nth-of-type(2) {
+    transform: rotate(60deg);
+  }
+  .line:nth-of-type(3) {
+    transform: rotate(120deg);
+  }
+  .line:nth-of-type(4) {
+    transform: rotate(180deg);
+  }
+  .line:nth-of-type(5) {
+    transform: rotate(240deg);
+  }
+  .line:nth-of-type(6) {
+    transform: rotate(300deg);
+  }
+  
+  .cabin {
+    background-color: red;
+    width: 20%;
+    height: 20%;
+    position: absolute;
+    border: 2px solid;
+    transform-origin: 50% 0%;
+    /*short hand*/
+    /*Replace linear to ease-in-out in the .cabin selector.*/
+    animation: cabins 10s ease-in-out infinite;
+
+    /*o make your cabin animation seem more like a natural swinging motion, you can use the ease-in-out timing function.*/
+    
+  }
+  
+  .cabin:nth-of-type(1) {
+    right: -8.5%;
+    top: 50%;
+  }
+  .cabin:nth-of-type(2) {
+    right: 17%;
+    top: 93.5%;
+  }
+  .cabin:nth-of-type(3) {
+    right: 67%;
+    top: 93.5%;
+  }
+  .cabin:nth-of-type(4) {
+    left: -8.5%;
+    top: 50%;
+  }
+  .cabin:nth-of-type(5) {
+    left: 17%;
+    top: 7%;
+  }
+  .cabin:nth-of-type(6) {
+    right: 17%;
+    top: 7%;
+  }
+
+  /* Using the @keyframes to make the animations*/
+  @keyframes wheel {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+ }
+
+ @keyframes cabins{
+    0% {
+       transform: rotate(0deg);
+       /*changing the color*/
+      /*Because the animation is on an infinite loop and the start and end colors are not the same, the transition appears jerky when it switches back to yellow from red.
+To start fixing this, remove the background-color from your 0% selector. background-color:yellow;*/
+     }
+     25%{
+        background-color:yellow;
+      }
+     /*Adding more colors */
+     50%{
+        background-color:purple;
+      }
+      75% {
+        background-color:yellow;
+      }
+     100% {
+       transform: rotate(-360deg);
+     }
+  }
